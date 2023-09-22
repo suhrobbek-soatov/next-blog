@@ -1,16 +1,16 @@
 import "@/styles/globals.css";
 import { CacheProvider, EmotionCache, ThemeProvider } from "@emotion/react";
 import type { AppProps } from "next/app";
-import { Roboto } from "next/font/google";
+import { Inter } from "next/font/google";
 import createEmotionCache from "@/helpers/createEmotionCache";
 import Head from "next/head";
 import theme from "@/helpers/theme";
 import { CssBaseline } from "@mui/material";
 
-const roboto = Roboto({
+const inter = Inter({
   weight: ["300", "400", "500", "700"],
-  style: ["normal", "italic"],
   subsets: ["latin"],
+  display: "swap",
 });
 
 const clientSideEmotionCache = createEmotionCache();
@@ -26,10 +26,13 @@ export default function App(props: MyAppProps) {
     <CacheProvider value={emotionCache}>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
+        <meta charSet="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <main className={roboto.className}>
+        <main className={inter.className}>
           <Component {...pageProps} />
         </main>
       </ThemeProvider>
