@@ -2,7 +2,6 @@ import { Content, Hero, Sidebar } from "@/components";
 import Layout from "@/layouts/layout";
 import { Box } from "@mui/material";
 import Head from "next/head";
-import { useEffect } from "react";
 
 const Home = () => {
   return (
