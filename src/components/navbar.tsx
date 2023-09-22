@@ -49,7 +49,7 @@ const Navbar: FC = ({ window }: Props): JSX.Element => {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box display="flex">
       <AppBar component="nav">
         <Toolbar>
           <IconButton
@@ -107,9 +107,7 @@ const Navbar: FC = ({ window }: Props): JSX.Element => {
           {drawer}
         </Drawer>
       </nav>
-      <Box component="main" sx={{ p: 1 }}>
-        <Toolbar />
-      </Box>
+      <Toolbar />
     </Box>
   );
 };
