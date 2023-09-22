@@ -50,7 +50,7 @@ const Navbar: FC = ({ window }: Props): JSX.Element => {
 
   return (
     <Box display="flex">
-      <AppBar component="nav">
+      <AppBar color="primary" component="nav">
         <Toolbar>
           <IconButton
             color="inherit"

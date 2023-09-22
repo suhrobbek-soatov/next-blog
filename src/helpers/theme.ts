@@ -11,7 +11,6 @@ export const inter = Inter({
 // theme instance.
 const theme = createTheme({
   palette: {
-    mode: "dark",
     background: {
       default: grey[900],
     },
