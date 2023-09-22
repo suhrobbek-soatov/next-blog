@@ -13,7 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 import { FC, useState } from "react";
-import MenuIcon from "@mui/icons-material/Menu";
+import { Close, Menu } from "@mui/icons-material";
 import Link from "next/link";
 import { navLinks } from "@/helpers/constants";
 
@@ -21,22 +21,16 @@ interface Props {
   window?: () => Window;
 }
 
-const drawerWidth = 240;
-
 const Navbar: FC = ({ window }: Props): JSX.Element => {
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(prevState => !prevState);
-  };
+  const handleDrawerToggle = () => setMobileOpen(prevState => !prevState);
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Link href="/">
-        <Typography variant="h6" sx={{ my: 2 }}>
-          MUI
-        </Typography>
-      </Link>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", paddingX: "15px" }}>
+      <Box paddingY={1} display="flex" justifyContent="space-between" alignItems="center">
+        <Typography fontWeight={700}>BLOG</Typography>
+        <Close />
+      </Box>
       <Divider />
       <List>
         {navLinks.map(item => (
@@ -65,15 +59,28 @@ const Navbar: FC = ({ window }: Props): JSX.Element => {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <MenuIcon />
+            <Menu />
           </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: 1, cursor: "pointer", userSelect: "none", display: { xs: "none", sm: "block" } }}
-          >
-            MUI
-          </Typography>
+          <Box sx={{ flexGrow: 1 }}>
+            <Typography
+              variant="h6"
+              component="div"
+              fontWeight={700}
+              sx={{ cursor: "pointer", userSelect: "none", display: { xs: "none", sm: "block" } }}
+            >
+              <Link href="/">BLOG</Link>
+            </Typography>
+          </Box>
+          <Box>
+            <Typography
+              variant="h6"
+              component="div"
+              fontWeight={700}
+              sx={{ cursor: "pointer", userSelect: "none", display: { xs: "block", sm: "none" } }}
+            >
+              <Link href="/">BLOG</Link>
+            </Typography>
+          </Box>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navLinks.map(item => (
               <Link key={item.route} href={item.route}>
@@ -94,7 +101,7 @@ const Navbar: FC = ({ window }: Props): JSX.Element => {
           }}
           sx={{
             display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
+            "& .MuiDrawer-paper": { boxSizing: "border-box", width: "85%" },
           }}
         >
           {drawer}
