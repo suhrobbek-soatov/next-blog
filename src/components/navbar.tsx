@@ -34,8 +34,8 @@ const Navbar: FC = ({ window }: Props): JSX.Element => {
       <Divider />
       <List>
         {navLinks.map(item => (
-          <Link href={item.route}>
-            <ListItem key={item.route} disablePadding>
+          <Link key={item.route} href={item.route}>
+            <ListItem disablePadding>
               <ListItemButton sx={{ textAlign: "center" }}>
                 <ListItemText primary={item.text} />
               </ListItemButton>

@@ -24,7 +24,7 @@ const Hero = () => {
             position="relative"
             key={item.image}
           >
-            <Image src={item.image} alt={item.title} fill objectFit="cover" />
+            <Image src={item.image} alt={item.title} priority={true} fill objectFit="cover" />
             <Box position="absolute" width="100%" sx={{ inset: 0, zIndex: 1, bgcolor: "rgba(0, 0, 0, 0.4)" }}>
               <Box
                 color="white"
