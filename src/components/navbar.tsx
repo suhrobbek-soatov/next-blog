@@ -26,7 +26,7 @@ const Navbar: FC = ({ window }: Props): JSX.Element => {
   const handleDrawerToggle = () => setMobileOpen(prevState => !prevState);
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", paddingX: "15px" }}>
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", color: "white", paddingX: "15px" }}>
       <Box paddingY={1} display="flex" justifyContent="space-between" alignItems="center">
         <Typography fontWeight={700}>BLOG</Typography>
         <Close />
@@ -50,7 +50,7 @@ const Navbar: FC = ({ window }: Props): JSX.Element => {
 
   return (
     <Box display="flex">
-      <AppBar color="primary" component="nav">
+      <AppBar sx={{ bgcolor: "#141414" }} component="nav">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -59,14 +59,14 @@ const Navbar: FC = ({ window }: Props): JSX.Element => {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <Menu />
+            <Menu sx={{color: "white"}} />
           </IconButton>
           <Box sx={{ flexGrow: 1 }}>
             <Typography
               variant="h6"
               component="div"
               fontWeight={700}
-              sx={{ cursor: "pointer", userSelect: "none", display: { xs: "none", sm: "block" } }}
+              sx={{ cursor: "pointer", color: "white", userSelect: "none", display: { xs: "none", sm: "block" } }}
             >
               <Link href="/">BLOG</Link>
             </Typography>
@@ -76,7 +76,7 @@ const Navbar: FC = ({ window }: Props): JSX.Element => {
               variant="h6"
               component="div"
               fontWeight={700}
-              sx={{ cursor: "pointer", userSelect: "none", display: { xs: "block", sm: "none" } }}
+              sx={{ cursor: "pointer", color: "white", userSelect: "none", display: { xs: "block", sm: "none" } }}
             >
               <Link href="/">BLOG</Link>
             </Typography>
