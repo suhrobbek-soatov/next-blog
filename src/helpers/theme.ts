@@ -13,9 +13,10 @@ const theme = createTheme({
   palette: {
     background: {
       default: grey[900],
+      paper: grey[900]
     },
     primary: {
-      main: "#141414",
+      main: grey[900],
     },
   },
   typography: {
