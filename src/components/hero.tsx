@@ -52,9 +52,9 @@ const Hero = () => {
                   <Avatar src={item.author.avatar} alt={item.author.name} />
                   <Box>
                     <Typography>{item.author.name}</Typography>
-                    <Box sx={{ opacity: "0.5" }} component="time">
+                    <Typography variant="body2" color="gray" component="time">
                       {format(new Date(), "dd MMM, yyyy")} &#x2022; 10min read
-                    </Box>
+                    </Typography>
                   </Box>
                 </Box>
               </Box>

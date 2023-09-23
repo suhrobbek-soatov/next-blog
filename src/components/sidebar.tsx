@@ -34,7 +34,7 @@ const Sidebar: FC = (): JSX.Element => {
                         <Avatar src={item.author.avatar} alt={item.author.name} />
                         <Box>
                           <Typography variant="body2">{item.author.name}</Typography>
-                          <Typography sx={{ opacity: "0.5" }} variant="body2" component="time">
+                          <Typography color="gray" variant="body2" component="time">
                             {format(new Date(), "dd MMM, yyyy")}
                           </Typography>
                         </Box>
