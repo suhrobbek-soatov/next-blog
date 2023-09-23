@@ -10,7 +10,7 @@ const Home = () => {
         <title>Blog | Home</title>
       </Head>
       <Hero />
-      <Grid container spacing="20px" paddingX="15px">
+      <Grid container spacing="20px" mb="20px" paddingX="15px">
         <Grid item xs={3.5}>
           <Sidebar />
         </Grid>
