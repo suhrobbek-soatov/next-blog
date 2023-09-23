@@ -17,7 +17,7 @@ const Sidebar: FC = (): JSX.Element => {
             {data.map((item, idx) => (
               <Fragment key={item.image}>
                 <Link href="#">
-                  <Box display="flex" gap="20px" alignItems="center">
+                  <Box display="flex" gap={{ xs: "10px", sm: "15px", md: "20px" }} alignItems="center">
                     <Box
                       overflow="hidden"
                       flexShrink={0}
@@ -29,8 +29,10 @@ const Sidebar: FC = (): JSX.Element => {
                       <Image src={item.image} alt={item.title} objectFit="cover" fill />
                     </Box>
                     <Box>
-                      <Typography mb="4px">{item.title}</Typography>
-                      <Box justifyContent={{ xs: "center", md: "left" }} display="flex" gap="10px" alignItems="center">
+                      <Typography sx={{ fontSize: { xs: "15px", md: "16px" } }} mb="4px">
+                        {item.title}
+                      </Typography>
+                      <Box display="flex" gap="10px" alignItems="center">
                         <Avatar src={item.author.avatar} alt={item.author.name} />
                         <Box>
                           <Typography variant="body2">{item.author.name}</Typography>
