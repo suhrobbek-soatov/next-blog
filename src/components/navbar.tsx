@@ -49,8 +49,8 @@ const Navbar: FC = ({ window }: Props): JSX.Element => {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box display="flex">
-      <AppBar sx={{ bgcolor: "#141414" }} component="nav">
+    <Box height="10vh" display="flex">
+      <AppBar sx={{ bgcolor: "#141414", height: "10vh", justifyContent: "center" }} component="nav">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -59,7 +59,7 @@ const Navbar: FC = ({ window }: Props): JSX.Element => {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <Menu sx={{color: "white"}} />
+            <Menu sx={{ color: "white" }} />
           </IconButton>
           <Box sx={{ flexGrow: 1 }}>
             <Typography

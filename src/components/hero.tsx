@@ -43,6 +43,7 @@ const Hero = () => {
                   {item.title}
                 </Typography>
                 <Typography
+                  color="gray"
                   sx={{ lineHeight: 1.2, fontSize: { xs: "18px", sm: "20px", md: "22px", lg: "24px" } }}
                   mb="10px"
                 >
