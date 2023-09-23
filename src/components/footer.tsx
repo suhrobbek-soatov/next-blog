@@ -8,7 +8,7 @@ const Footer: FC = (): JSX.Element => {
     <Box
       component="footer"
       color="white"
-      bgcolor="primary.main"
+      bgcolor="#141414"
       sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", p: "20px" }}
     >
       <Typography>©️ {format(new Date(), "yyyy")} BLOG. All Right Reserved!</Typography>
