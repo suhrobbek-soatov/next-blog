@@ -38,7 +38,7 @@ const Sidebar: FC<ISidebarProps> = ({ latestBlogs, categories }): JSX.Element =>
                         <Box>
                           <Typography variant="body2">{blog.author.name}</Typography>
                           <Typography color="gray" variant="body2" component="time">
-                            {format(new Date(), "dd MMM, yyyy")}
+                            {format(new Date(blog.createdAt), "dd MMM, yyyy")}
                           </Typography>
                         </Box>
                       </Box>
