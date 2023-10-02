@@ -3,9 +3,10 @@ import { format } from "date-fns";
 import Image from "next/image";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import { data } from "../helpers/constants";
+import { FC } from "react";
+import { IHeroProps } from "./hero.props";
 
-const Hero = () => {
+const Hero: FC<IHeroProps> = ({ blogs }): JSX.Element => {
   const responsive = {
     mobile: {
       breakpoint: { max: 3600, min: 0 },
@@ -16,7 +17,7 @@ const Hero = () => {
   return (
     <Box width="100%">
       <Carousel responsive={responsive}>
-        {data.map(item => (
+        {blogs.map(blog => (
           <Box
             textAlign={{ xs: "center", md: "left" }}
             display="flex"
@@ -24,9 +25,9 @@ const Hero = () => {
             mb="20px"
             height={{ xs: "50vh", sm: "60vh", md: "70vh" }}
             position="relative"
-            key={item.image}
+            key={blog.id}
           >
-            <Image src={item.image} alt={item.title} priority={true} fill objectFit="cover" />
+            <Image src={blog.image.url} alt={blog.title} priority={true} fill objectFit="cover" />
             <Box position="absolute" width="100%" sx={{ inset: 0, zIndex: 1, bgcolor: "rgba(0, 0, 0, 0.4)" }}>
               <Box
                 color="white"
@@ -40,21 +41,21 @@ const Hero = () => {
                   sx={{ lineHeight: 1.2, fontSize: { xs: "28px", sm: "36px", md: "42px", lg: "48px" } }}
                   mb="5px"
                 >
-                  {item.title}
+                  {blog.title}
                 </Typography>
                 <Typography
                   color="gray"
                   sx={{ lineHeight: 1.2, fontSize: { xs: "18px", sm: "20px", md: "22px", lg: "24px" } }}
                   mb="10px"
                 >
-                  {item.exerpt}
+                  {blog.excerpt}
                 </Typography>
                 <Box justifyContent={{ xs: "center", md: "left" }} display="flex" gap="10px" alignItems="center">
-                  <Avatar src={item.author.avatar} alt={item.author.name} />
+                  <Avatar src={blog.author.avatar.url} alt={blog.author.name} />
                   <Box>
-                    <Typography>{item.author.name}</Typography>
+                    <Typography>{blog.author.name}</Typography>
                     <Typography variant="body2" color="gray" component="time">
-                      {format(new Date(), "dd MMM, yyyy")} &#x2022; 10min read
+                      {format(new Date(blog.createdAt), "dd MMM, yyyy")} &#x2022; 10min read
                     </Typography>
                   </Box>
                 </Box>

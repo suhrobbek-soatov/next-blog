@@ -4,18 +4,19 @@ import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 import { FC, Fragment } from "react";
+import { ISidebarProps } from "./sidebar.props";
 
-const Sidebar: FC = (): JSX.Element => {
+const Sidebar: FC<ISidebarProps> = ({ latestBlogs, categories }): JSX.Element => {
   return (
     <Box height="100%">
-      <Box position="sticky" top="90px">
+      <Box position="sticky" top="120px">
         <Box mb="20px" sx={sidebarStyles}>
           <Typography mb="12px" variant="h5">
-            Latest blog
+            Latest blogs
           </Typography>
           <Box display="flex" flexDirection="column">
-            {data.map((item, idx) => (
-              <Fragment key={item.image}>
+            {latestBlogs.map((blog, idx) => (
+              <Fragment key={blog.id}>
                 <Link href="#">
                   <Box display="flex" gap={{ xs: "10px", sm: "15px", md: "20px" }} alignItems="center">
                     <Box
@@ -26,16 +27,16 @@ const Sidebar: FC = (): JSX.Element => {
                       height="100px"
                       position="relative"
                     >
-                      <Image src={item.image} alt={item.title} objectFit="cover" fill />
+                      <Image src={blog.image.url} alt={blog.title} objectFit="cover" fill />
                     </Box>
                     <Box>
                       <Typography sx={{ fontSize: { xs: "15px", md: "16px" } }} mb="4px">
-                        {item.title}
+                        {blog.title}
                       </Typography>
                       <Box display="flex" gap="10px" alignItems="center">
-                        <Avatar src={item.author.avatar} alt={item.author.name} />
+                        <Avatar src={blog.author.avatar.url} alt={blog.author.name} />
                         <Box>
-                          <Typography variant="body2">{item.author.name}</Typography>
+                          <Typography variant="body2">{blog.author.name}</Typography>
                           <Typography color="gray" variant="body2" component="time">
                             {format(new Date(), "dd MMM, yyyy")}
                           </Typography>
@@ -51,14 +52,14 @@ const Sidebar: FC = (): JSX.Element => {
         </Box>
         <Box sx={sidebarStyles}>
           <Typography mb="12px" variant="h5">
-            Category
+            Categories
           </Typography>
           <Box display="flex" flexDirection="column">
-            {navLinks.map((link, idx) => (
-              <Fragment key={link.route}>
-                <Link href={link.route}>
+            {categories.map((category, idx) => (
+              <Fragment key={category.slug}>
+                <Link href={category.slug}>
                   <Button sx={{ py: "16px", color: "white", width: "100%", justifyContent: "flex-start" }}>
-                    {link.text}
+                    {category.label}
                   </Button>
                 </Link>
 
