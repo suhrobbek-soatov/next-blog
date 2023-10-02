@@ -13,7 +13,7 @@ const Home: FC<HomePageProps> = ({ blogs, latestBlogs, categories }): JSX.Elemen
       <Head>
         <title>Blog | Home</title>
       </Head>
-      <Hero blogs={blogs} />
+      <Hero blogs={blogs.slice(0, 3)} />
       <Grid container spacing="20px" mb="20px" paddingX="15px">
         <Grid item xs={12} lg={3.5}>
           <Sidebar latestBlogs={latestBlogs} categories={categories} />
