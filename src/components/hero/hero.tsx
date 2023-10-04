@@ -5,6 +5,7 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { FC } from "react";
 import { IHeroProps } from "./hero.props";
+import { calcEstimatedReadTime } from "@/helpers/time";
 
 const Hero: FC<IHeroProps> = ({ blogs }): JSX.Element => {
   const responsive = {
@@ -55,7 +56,8 @@ const Hero: FC<IHeroProps> = ({ blogs }): JSX.Element => {
                   <Box>
                     <Typography>{blog.author.name}</Typography>
                     <Typography variant="body2" color="gray" component="time">
-                      {format(new Date(blog.createdAt), "dd MMM, yyyy")} &#x2022; 10min read
+                      {format(new Date(blog.createdAt), "dd MMM, yyyy")} &#x2022;{" "}
+                      {calcEstimatedReadTime(blog.description.text)} min read
                     </Typography>
                   </Box>
                 </Box>

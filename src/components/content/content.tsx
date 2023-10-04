@@ -3,6 +3,7 @@ import { format } from "date-fns";
 import Image from "next/image";
 import { FC } from "react";
 import { IContentProps } from "./content.props";
+import { calcEstimatedReadTime } from "@/helpers/time";
 
 const Content: FC<IContentProps> = ({ blogs }): JSX.Element => {
   return (
@@ -32,7 +33,8 @@ const Content: FC<IContentProps> = ({ blogs }): JSX.Element => {
             <Box>
               <Typography>{blog.author.name}</Typography>
               <Typography variant="body2" color="gray" component="time">
-                {format(new Date(blog.createdAt), "dd MMM, yyyy")} &#x2022; 10min read
+                {format(new Date(blog.createdAt), "dd MMM, yyyy")} &#x2022;{" "}
+                {calcEstimatedReadTime(blog.description.text)} min read
               </Typography>
             </Box>
           </Box>

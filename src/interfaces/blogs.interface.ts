@@ -14,6 +14,9 @@ export interface IBlog {
   };
   createdAt: Date;
   category: IBlogCategory;
+  description: {
+    text: string;
+  };
 }
 
 export interface IBlogCategory {
