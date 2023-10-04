@@ -1,4 +1,4 @@
-import { data, navLinks } from "@/helpers/constants";
+import { navLinks } from "@/helpers/constants";
 import { Avatar, Box, Button, Divider, Typography } from "@mui/material";
 import { format } from "date-fns";
 import Image from "next/image";
@@ -17,7 +17,7 @@ const Sidebar: FC<ISidebarProps> = ({ latestBlogs, categories }): JSX.Element =>
           <Box display="flex" flexDirection="column">
             {latestBlogs.map((blog, idx) => (
               <Fragment key={blog.id}>
-                <Link href="#">
+                <Link href={`/blog/${blog.slug}`}>
                   <Box display="flex" gap={{ xs: "10px", sm: "15px", md: "20px" }} alignItems="center">
                     <Box
                       overflow="hidden"
@@ -44,7 +44,7 @@ const Sidebar: FC<ISidebarProps> = ({ latestBlogs, categories }): JSX.Element =>
                       </Box>
                     </Box>
                   </Box>
-                  {idx !== data.length - 1 && <Divider sx={{ my: "10px" }} color="grey" />}
+                  {idx !== latestBlogs.length - 1 && <Divider sx={{ my: "10px" }} color="grey" />}
                 </Link>
               </Fragment>
             ))}
@@ -57,7 +57,7 @@ const Sidebar: FC<ISidebarProps> = ({ latestBlogs, categories }): JSX.Element =>
           <Box display="flex" flexDirection="column">
             {categories.map((category, idx) => (
               <Fragment key={category.slug}>
-                <Link href={category.slug}>
+                <Link href={`/category/${category.slug}`}>
                   <Button sx={{ py: "16px", color: "white", width: "100%", justifyContent: "flex-start" }}>
                     {category.label}
                   </Button>

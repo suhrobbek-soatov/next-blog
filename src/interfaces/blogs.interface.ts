@@ -16,6 +16,7 @@ export interface IBlog {
   category: IBlogCategory;
   description: {
     text: string;
+    html: string;
   };
 }
 

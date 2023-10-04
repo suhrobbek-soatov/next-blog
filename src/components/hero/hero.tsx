@@ -6,8 +6,12 @@ import "react-multi-carousel/lib/styles.css";
 import { FC } from "react";
 import { IHeroProps } from "./hero.props";
 import { calcEstimatedReadTime } from "@/helpers/time";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Hero: FC<IHeroProps> = ({ blogs }): JSX.Element => {
+  const router = useRouter();
+
   const responsive = {
     mobile: {
       breakpoint: { max: 3600, min: 0 },
@@ -20,13 +24,17 @@ const Hero: FC<IHeroProps> = ({ blogs }): JSX.Element => {
       <Carousel responsive={responsive}>
         {blogs.map(blog => (
           <Box
-            textAlign={{ xs: "center", md: "left" }}
-            display="flex"
-            width="100%"
-            mb="20px"
-            height={{ xs: "50vh", sm: "60vh", md: "70vh" }}
-            position="relative"
+            onClick={() => router.push(`/blog/${blog.slug}`)}
             key={blog.id}
+            sx={{
+              width: "100%",
+              textAlign: { xs: "center", md: "left" },
+              display: "flex",
+              mb: "20px",
+              cursor: "pointer",
+              height: { xs: "50vh", sm: "60vh", md: "70vh" },
+              position: "relative",
+            }}
           >
             <Image src={blog.image.url} alt={blog.title} priority={true} fill objectFit="cover" />
             <Box position="absolute" width="100%" sx={{ inset: 0, zIndex: 1, bgcolor: "rgba(0, 0, 0, 0.4)" }}>
