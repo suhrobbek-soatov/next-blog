@@ -9,7 +9,15 @@ const Footer: FC = (): JSX.Element => {
       component="footer"
       color="white"
       bgcolor="#141414"
-      sx={{ display: "flex", justifyContent: "space-between", alignItems: "center", p: "20px" }}
+      borderTop="1px solid gray"
+      sx={{
+        display: "flex",
+        flexDirection: { xs: "column", sm: "row" },
+        gap: "20px",
+        justifyContent: "space-between",
+        alignItems: "center",
+        p: "20px",
+      }}
     >
       <Typography>©️ {format(new Date(), "yyyy")} BLOG. All Right Reserved!</Typography>
       <ButtonGroup disableElevation variant="contained" aria-label="socials">
