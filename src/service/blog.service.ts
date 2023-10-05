@@ -108,7 +108,6 @@ export const BlogsService = {
     const { blog } = await request<{ blog: IBlog }>(graphqlAPI, query, { slug });
     return blog;
   },
-
   async getCategoryBlogs(category: string) {
     const query = gql`
       query GetCategoryBlogs($category: String) {
