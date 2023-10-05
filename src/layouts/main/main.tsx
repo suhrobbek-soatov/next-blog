@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { MainLayoutProps } from "./layout.props";
+import { MainLayoutProps } from "./main.props";
 import { Footer, Navbar } from "@/components";
 import { Box } from "@mui/material";
 
