@@ -1,9 +1,8 @@
 import { IBlogCategory } from "@/interfaces/blogs.interface";
-import Layout from "@/layouts/layout";
+import { MainLayout, SeoLayout } from "@/layouts";
 import { BlogsService } from "@/service/blog.service";
 import { Box, Button, ButtonGroup, Typography } from "@mui/material";
 import { GetServerSideProps } from "next";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { FC } from "react";
 
@@ -11,11 +10,8 @@ const CategoryPage: FC<CategoryPageProps> = ({ categories }): JSX.Element => {
   const router = useRouter();
 
   return (
-    <>
-      <Head>
-        <title>Blog | Categories</title>
-      </Head>
-      <Layout>
+    <SeoLayout metaTitle="Blog | Categories">
+      <MainLayout>
         <Box
           mt="40px"
           mb="20px"
@@ -45,8 +41,8 @@ const CategoryPage: FC<CategoryPageProps> = ({ categories }): JSX.Element => {
             ))}
           </ButtonGroup>
         </Box>
-      </Layout>
-    </>
+      </MainLayout>
+    </SeoLayout>
   );
 };
 

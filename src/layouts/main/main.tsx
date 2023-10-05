@@ -1,9 +1,9 @@
 import { FC } from "react";
-import { LayoutProps } from "./layout.props";
+import { MainLayoutProps } from "./layout.props";
 import { Footer, Navbar } from "@/components";
 import { Box } from "@mui/material";
 
-const Layout: FC<LayoutProps> = ({ children }): JSX.Element => {
+const MainLayout: FC<MainLayoutProps> = ({ children }): JSX.Element => {
   return (
     <>
       <Navbar />
@@ -13,4 +13,4 @@ const Layout: FC<LayoutProps> = ({ children }): JSX.Element => {
   );
 };
 
-export default Layout;
+export default MainLayout;

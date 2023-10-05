@@ -12,3 +12,11 @@ export const navLinks = [
     text: "Blogs",
   },
 ];
+
+export const seoConfig = {
+  title: "Blog | Home",
+  desc: "All blogs about IT",
+  siteAuthor: "Samar Badriddinov",
+  keywords: "blog, IT, Programming",
+  favicon: "/favicon.ico",
+};

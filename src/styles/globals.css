@@ -5,3 +5,7 @@ a {
   font-size: inherit;
   font-weight: inherit;
 }
+
+#nprogress .bar {
+  z-index: 1110 !important;
+}

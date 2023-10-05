@@ -1,22 +1,18 @@
 import { Sidebar } from "@/components";
 import { calcEstimatedReadTime } from "@/helpers/time";
 import { IBlog, IBlogCategory } from "@/interfaces/blogs.interface";
-import Layout from "@/layouts/layout";
+import { MainLayout, SeoLayout } from "@/layouts";
 import { BlogsService } from "@/service/blog.service";
 import { Avatar, Box, Divider, Grid, Typography } from "@mui/material";
 import { format } from "date-fns";
 import { GetServerSideProps } from "next";
-import Head from "next/head";
 import Image from "next/image";
 import { FC } from "react";
 
 const BlogPage: FC<BlogPageProps> = ({ blog, latestBlogs, categories }): JSX.Element => {
   return (
-    <>
-      <Head>
-        <title>{`Blog | ${blog.title}`}</title>
-      </Head>
-      <Layout>
+    <SeoLayout metaTitle={`Blog | ${blog.title}`}>
+      <MainLayout>
         <Grid mt="1px" container spacing="20px" mb="20px" paddingX="15px">
           <Grid item xs={12} lg={8.5}>
             <Box
@@ -53,8 +49,8 @@ const BlogPage: FC<BlogPageProps> = ({ blog, latestBlogs, categories }): JSX.Ele
             <Sidebar latestBlogs={latestBlogs} categories={categories} />
           </Grid>
         </Grid>
-      </Layout>
-    </>
+      </MainLayout>
+    </SeoLayout>
   );
 };
 
