@@ -76,7 +76,10 @@ export const BlogsService = {
       }
     `;
 
-    const { categories } = await request<{ categories: IBlogCategory[] }>(graphqlAPI, query);
+    const { categories } = await request<{ categories: IBlogCategory[] }>(
+      graphqlAPI,
+      query
+    );
     return categories;
   },
   async getBlogDetails(slug: string) {
@@ -105,7 +108,9 @@ export const BlogsService = {
       }
     `;
 
-    const { blog } = await request<{ blog: IBlog }>(graphqlAPI, query, { slug });
+    const { blog } = await request<{ blog: IBlog }>(graphqlAPI, query, {
+      slug,
+    });
     return blog;
   },
   async getCategoryBlogs(category: string) {
@@ -134,7 +139,9 @@ export const BlogsService = {
       }
     `;
 
-    const { blogs } = await request<{ blogs: IBlog[] }>(graphqlAPI, query, { category });
+    const { blogs } = await request<{ blogs: IBlog[] }>(graphqlAPI, query, {
+      category,
+    });
     return blogs;
   },
 };
