@@ -16,7 +16,7 @@ export const navLinks = [
 export const seoConfig = {
   title: "Blog | Home",
   desc: "All blogs about IT",
-  siteAuthor: "Samar Badriddinov",
-  keywords: "blog, IT, Programming",
+  siteAuthor: "Suhrobbek Soatov",
+  keywords: "blog, IT, Programming, AI",
   favicon: "/favicon.ico",
 };
