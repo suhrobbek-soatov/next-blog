@@ -2,6 +2,7 @@ import { FC } from "react";
 import Image from "next/image";
 import { format } from "date-fns";
 import * as Mui from "@mui/material";
+import parser from "html-react-parser";
 import { GetServerSideProps } from "next";
 
 import { BlogsService } from "@/service/blog.service";
@@ -44,7 +45,7 @@ const BlogPage: FC<BlogPageProps> = ({ blog, latestBlogs, categories }): JSX.Ele
                 {blog.excerpt}
               </Mui.Typography>
               <Mui.Divider color="gray" sx={{ my: "14px" }} />
-              <div style={{ opacity: "0.8" }} dangerouslySetInnerHTML={{ __html: blog.description.html }}></div>
+              <div style={{ opacity: "0.8" }}>{parser(blog.description.html)}</div>
             </Mui.Box>
           </Mui.Grid>
           <Mui.Grid item xs={12} lg={3.5}>
