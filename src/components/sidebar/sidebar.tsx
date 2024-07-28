@@ -1,25 +1,26 @@
-import { navLinks } from "@/helpers/constants";
-import { Avatar, Box, Button, Divider, Typography } from "@mui/material";
+import { FC, Fragment } from "react";
+import * as Mui from "@mui/material";
 import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
-import { FC, Fragment } from "react";
+
+import { navLinks } from "@/helpers/constants";
 import { ISidebarProps } from "./sidebar.props";
 
 const Sidebar: FC<ISidebarProps> = ({ latestBlogs, categories }): JSX.Element => {
   return (
-    <Box height="100%">
-      <Box position="sticky" top="120px">
-        <Box mb="20px" sx={sidebarStyles}>
-          <Typography mb="12px" variant="h5">
+    <Mui.Box height="100%">
+      <Mui.Box position="sticky" top="120px">
+        <Mui.Box mb="20px" sx={sidebarStyles}>
+          <Mui.Typography mb="12px" variant="h5">
             Latest blogs
-          </Typography>
-          <Box display="flex" flexDirection="column">
+          </Mui.Typography>
+          <Mui.Box display="flex" flexDirection="column">
             {latestBlogs.map((blog, idx) => (
               <Fragment key={blog.id}>
                 <Link href={`/blog/${blog.slug}`}>
-                  <Box display="flex" gap={{ xs: "10px", sm: "15px", md: "20px" }} alignItems="center">
-                    <Box
+                  <Mui.Box display="flex" gap={{ xs: "10px", sm: "15px", md: "20px" }} alignItems="center">
+                    <Mui.Box
                       overflow="hidden"
                       flexShrink={0}
                       width="100px"
@@ -28,48 +29,48 @@ const Sidebar: FC<ISidebarProps> = ({ latestBlogs, categories }): JSX.Element =>
                       position="relative"
                     >
                       <Image src={blog.image.url} alt={blog.title} objectFit="cover" fill />
-                    </Box>
-                    <Box>
-                      <Typography sx={{ fontSize: { xs: "15px", md: "16px" } }} mb="4px">
+                    </Mui.Box>
+                    <Mui.Box>
+                      <Mui.Typography sx={{ fontSize: { xs: "15px", md: "16px" } }} mb="4px">
                         {blog.title}
-                      </Typography>
-                      <Box display="flex" gap="10px" alignItems="center">
-                        <Avatar src={blog.author.avatar.url} alt={blog.author.name} />
-                        <Box>
-                          <Typography variant="body2">{blog.author.name}</Typography>
-                          <Typography color="gray" variant="body2" component="time">
+                      </Mui.Typography>
+                      <Mui.Box display="flex" gap="10px" alignItems="center">
+                        <Mui.Avatar src={blog.author.avatar.url} alt={blog.author.name} />
+                        <Mui.Box>
+                          <Mui.Typography variant="body2">{blog.author.name}</Mui.Typography>
+                          <Mui.Typography color="gray" variant="body2" component="time">
                             {format(new Date(blog.createdAt), "dd MMM, yyyy")}
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </Box>
-                  </Box>
-                  {idx !== latestBlogs.length - 1 && <Divider sx={{ my: "10px" }} color="grey" />}
+                          </Mui.Typography>
+                        </Mui.Box>
+                      </Mui.Box>
+                    </Mui.Box>
+                  </Mui.Box>
+                  {idx !== latestBlogs.length - 1 && <Mui.Divider sx={{ my: "10px" }} color="grey" />}
                 </Link>
               </Fragment>
             ))}
-          </Box>
-        </Box>
-        <Box sx={sidebarStyles}>
-          <Typography mb="12px" variant="h5">
+          </Mui.Box>
+        </Mui.Box>
+        <Mui.Box sx={sidebarStyles}>
+          <Mui.Typography mb="12px" variant="h5">
             Categories
-          </Typography>
-          <Box display="flex" flexDirection="column">
+          </Mui.Typography>
+          <Mui.Box display="flex" flexDirection="column">
             {categories.map((category, idx) => (
               <Fragment key={category.slug}>
                 <Link href={`/category/${category.slug}`}>
-                  <Button sx={{ py: "16px", color: "white", width: "100%", justifyContent: "flex-start" }}>
+                  <Mui.Button sx={{ py: "16px", color: "white", width: "100%", justifyContent: "flex-start" }}>
                     {category.label}
-                  </Button>
+                  </Mui.Button>
                 </Link>
 
-                {idx !== navLinks.length - 1 && <Divider color="grey" />}
+                {idx !== navLinks.length - 1 && <Mui.Divider color="grey" />}
               </Fragment>
             ))}
-          </Box>
-        </Box>
-      </Box>
-    </Box>
+          </Mui.Box>
+        </Mui.Box>
+      </Mui.Box>
+    </Mui.Box>
   );
 };
 

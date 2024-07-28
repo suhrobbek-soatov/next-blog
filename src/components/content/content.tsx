@@ -1,10 +1,11 @@
-import { Avatar, Box, Divider, Typography } from "@mui/material";
-import { format } from "date-fns";
-import Image from "next/image";
 import { FC } from "react";
-import { IContentProps } from "./content.props";
-import { calcEstimatedReadTime } from "@/helpers/time";
 import Link from "next/link";
+import Image from "next/image";
+import { format } from "date-fns";
+import { Avatar, Box, Divider, Typography } from "@mui/material";
+
+import { calcEstimatedReadTime } from "@/helpers/time";
+import { IContentProps } from "./content.props";
 
 const Content: FC<IContentProps> = ({ blogs }): JSX.Element => {
   return (

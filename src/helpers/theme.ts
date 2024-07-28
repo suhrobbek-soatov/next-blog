@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
-import { createTheme } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
+import { createTheme } from "@mui/material/styles";
 
 export const inter = Inter({
   weight: ["300", "400", "500", "700"],
@@ -13,7 +13,7 @@ const theme = createTheme({
   palette: {
     background: {
       default: grey[900],
-      paper: grey[900]
+      paper: grey[900],
     },
     primary: {
       main: grey[900],

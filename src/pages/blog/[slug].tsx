@@ -1,54 +1,56 @@
-import { Sidebar } from "@/components";
+import { FC } from "react";
+import Image from "next/image";
+import { format } from "date-fns";
+import * as Mui from "@mui/material";
+import { GetServerSideProps } from "next";
+
+import { BlogsService } from "@/service/blog.service";
 import { calcEstimatedReadTime } from "@/helpers/time";
 import { IBlog, IBlogCategory } from "@/interfaces/blogs.interface";
+
+import { Sidebar } from "@/components";
 import { MainLayout, SeoLayout } from "@/layouts";
-import { BlogsService } from "@/service/blog.service";
-import { Avatar, Box, Divider, Grid, Typography } from "@mui/material";
-import { format } from "date-fns";
-import { GetServerSideProps } from "next";
-import Image from "next/image";
-import { FC } from "react";
 
 const BlogPage: FC<BlogPageProps> = ({ blog, latestBlogs, categories }): JSX.Element => {
   return (
     <SeoLayout metaTitle={`Blog | ${blog.title}`}>
       <MainLayout>
-        <Grid mt="1px" container spacing="20px" mb="20px" paddingX="15px">
-          <Grid item xs={12} lg={8.5}>
-            <Box
+        <Mui.Grid mt="1px" container spacing="20px" mb="20px" paddingX="15px">
+          <Mui.Grid item xs={12} lg={8.5}>
+            <Mui.Box
               bgcolor="rgba(0, 0, 0, 0.3)"
               color="white"
               boxShadow="0 8px 16px rgba(255, 255, 255, 0.2)"
               borderRadius="8px"
               p="20px"
             >
-              <Box position="relative" width="100%" height="50vh" mb="25px">
+              <Mui.Box position="relative" width="100%" height="50vh" mb="25px">
                 <Image src={blog.image.url} alt={blog.title} style={{ borderRadius: "10px" }} fill objectFit="cover" />
-              </Box>
-              <Box display="flex" mb="20px" gap="20px" alignItems="center">
-                <Avatar src={blog.author.avatar.url} alt={blog.author.name} />
-                <Box>
-                  <Typography>{blog.author.name}</Typography>
-                  <Typography variant="body2" color="gray" component="time">
+              </Mui.Box>
+              <Mui.Box display="flex" mb="20px" gap="20px" alignItems="center">
+                <Mui.Avatar src={blog.author.avatar.url} alt={blog.author.name} />
+                <Mui.Box>
+                  <Mui.Typography>{blog.author.name}</Mui.Typography>
+                  <Mui.Typography variant="body2" color="gray" component="time">
                     {format(new Date(blog.createdAt), "dd MMM, yyyy")} &#x2022;{" "}
                     {calcEstimatedReadTime(blog.description.text)} min read
-                  </Typography>
-                </Box>
-              </Box>
-              <Typography variant="h4" mb="15px">
+                  </Mui.Typography>
+                </Mui.Box>
+              </Mui.Box>
+              <Mui.Typography variant="h4" mb="15px">
                 {blog.title}
-              </Typography>
-              <Typography variant="body2" color="gray" sx={{ fontWeight: 400 }}>
+              </Mui.Typography>
+              <Mui.Typography variant="body2" color="gray" sx={{ fontWeight: 400 }}>
                 {blog.excerpt}
-              </Typography>
-              <Divider color="gray" sx={{ my: "14px" }} />
+              </Mui.Typography>
+              <Mui.Divider color="gray" sx={{ my: "14px" }} />
               <div style={{ opacity: "0.8" }} dangerouslySetInnerHTML={{ __html: blog.description.html }}></div>
-            </Box>
-          </Grid>
-          <Grid item xs={12} lg={3.5}>
+            </Mui.Box>
+          </Mui.Grid>
+          <Mui.Grid item xs={12} lg={3.5}>
             <Sidebar latestBlogs={latestBlogs} categories={categories} />
-          </Grid>
-        </Grid>
+          </Mui.Grid>
+        </Mui.Grid>
       </MainLayout>
     </SeoLayout>
   );
@@ -57,16 +59,14 @@ const BlogPage: FC<BlogPageProps> = ({ blog, latestBlogs, categories }): JSX.Ele
 export default BlogPage;
 
 export const getServerSideProps: GetServerSideProps<BlogPageProps> = async ({ query }) => {
-  const blog = await BlogsService.getBlogDetails(query.slug as string);
-  const latestBlogs = await BlogsService.getLatestBlogs();
-  const categories = await BlogsService.getBlogCategories();
+  const [blog, latestBlogs, categories] = await Promise.all([
+    BlogsService.getBlogDetails(query.slug as string),
+    BlogsService.getLatestBlogs(),
+    BlogsService.getBlogCategories(),
+  ]);
 
   return {
-    props: {
-      blog,
-      latestBlogs,
-      categories,
-    },
+    props: { blog, latestBlogs, categories },
   };
 };
 

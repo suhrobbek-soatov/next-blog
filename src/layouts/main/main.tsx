@@ -1,9 +1,9 @@
-import { FC } from "react";
-import { MainLayoutProps } from "./main.props";
-import { Footer, Navbar } from "@/components";
+import { FC, PropsWithChildren } from "react";
 import { Box } from "@mui/material";
 
-const MainLayout: FC<MainLayoutProps> = ({ children }): JSX.Element => {
+import { Footer, Navbar } from "@/components";
+
+const MainLayout: FC<PropsWithChildren> = ({ children }): JSX.Element => {
   return (
     <>
       <Navbar />

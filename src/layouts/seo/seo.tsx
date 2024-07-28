@@ -1,7 +1,9 @@
 import { FC } from "react";
-import { SeoLayoutProps } from "./seo.props";
 import Head from "next/head";
+
 import { seoConfig } from "@/helpers/constants";
+import { SeoLayoutProps } from "./seo.props";
+
 const { desc, keywords, siteAuthor, title, favicon } = seoConfig;
 
 const SeoLayout: FC<SeoLayoutProps> = ({

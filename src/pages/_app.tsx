@@ -1,13 +1,16 @@
+import { useEffect } from "react";
+import NProgress from "nprogress";
+import { Router } from "next/router";
+import type { AppProps } from "next/app";
+import { CssBaseline } from "@mui/material";
+import { CacheProvider, EmotionCache, ThemeProvider } from "@emotion/react";
+
+import theme from "@/helpers/theme";
+import createEmotionCache from "@/helpers/createEmotionCache";
+
 import "@/styles/globals.css";
 import "nprogress/nprogress.css";
-import { CacheProvider, EmotionCache, ThemeProvider } from "@emotion/react";
-import type { AppProps } from "next/app";
-import createEmotionCache from "@/helpers/createEmotionCache";
-import theme from "@/helpers/theme";
-import { CssBaseline } from "@mui/material";
-import NProgress from "nprogress";
-import { useEffect } from "react";
-import { Router } from "next/router";
+import "react-multi-carousel/lib/styles.css";
 
 const clientSideEmotionCache = createEmotionCache();
 

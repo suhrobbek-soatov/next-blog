@@ -1,10 +1,11 @@
-import { IBlogCategory } from "@/interfaces/blogs.interface";
-import { MainLayout, SeoLayout } from "@/layouts";
-import { BlogsService } from "@/service/blog.service";
-import { Box, Button, ButtonGroup, Typography } from "@mui/material";
-import { GetServerSideProps } from "next";
-import { useRouter } from "next/router";
 import { FC } from "react";
+import * as Mui from "@mui/material";
+import { useRouter } from "next/router";
+import { GetServerSideProps } from "next";
+
+import { IBlogCategory } from "@/interfaces/blogs.interface";
+import { BlogsService } from "@/service/blog.service";
+import { MainLayout, SeoLayout } from "@/layouts";
 
 const CategoryPage: FC<CategoryPageProps> = ({ categories }): JSX.Element => {
   const router = useRouter();
@@ -12,7 +13,7 @@ const CategoryPage: FC<CategoryPageProps> = ({ categories }): JSX.Element => {
   return (
     <SeoLayout metaTitle="Blog | Categories">
       <MainLayout>
-        <Box
+        <Mui.Box
           mt="40px"
           mb="20px"
           p="10px"
@@ -26,21 +27,21 @@ const CategoryPage: FC<CategoryPageProps> = ({ categories }): JSX.Element => {
           justifyContent="center"
           alignItems="center"
         >
-          <Typography variant="h3" mb="30px" sx={{ textAlign: "center" }}>
+          <Mui.Typography variant="h3" mb="30px" sx={{ textAlign: "center" }}>
             All Categories
-          </Typography>
-          <ButtonGroup
+          </Mui.Typography>
+          <Mui.ButtonGroup
             sx={{ flexDirection: { xs: "column", sm: "row" } }}
             variant="contained"
             aria-label="button group"
           >
             {categories.map(category => (
-              <Button key={category.slug} onClick={() => router.push(`/category/${category.slug}`)}>
+              <Mui.Button key={category.slug} onClick={() => router.push(`/category/${category.slug}`)}>
                 # {category.label}
-              </Button>
+              </Mui.Button>
             ))}
-          </ButtonGroup>
-        </Box>
+          </Mui.ButtonGroup>
+        </Mui.Box>
       </MainLayout>
     </SeoLayout>
   );
@@ -52,9 +53,7 @@ export const getServerSideProps: GetServerSideProps<CategoryPageProps> = async (
   const categories = await BlogsService.getBlogCategories();
 
   return {
-    props: {
-      categories,
-    },
+    props: { categories },
   };
 };
 

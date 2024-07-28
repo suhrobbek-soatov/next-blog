@@ -1,13 +1,13 @@
-import { Avatar, Box, Typography } from "@mui/material";
-import { format } from "date-fns";
-import Image from "next/image";
-import Carousel from "react-multi-carousel";
-import "react-multi-carousel/lib/styles.css";
 import { FC } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { format } from "date-fns";
+import { useRouter } from "next/router";
+import Carousel from "react-multi-carousel";
+import { Avatar, Box, Typography } from "@mui/material";
+
 import { IHeroProps } from "./hero.props";
 import { calcEstimatedReadTime } from "@/helpers/time";
-import Link from "next/link";
-import { useRouter } from "next/router";
 
 const Hero: FC<IHeroProps> = ({ blogs }): JSX.Element => {
   const router = useRouter();

@@ -1,20 +1,8 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  Divider,
-  Drawer,
-  IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-  Toolbar,
-  Typography,
-} from "@mui/material";
 import { FC, useState } from "react";
-import { Close, Menu } from "@mui/icons-material";
 import Link from "next/link";
+import * as Mui from "@mui/material";
+import { Close, Menu } from "@mui/icons-material";
+
 import { navLinks } from "@/helpers/constants";
 
 interface Props {
@@ -26,33 +14,33 @@ const Navbar: FC = ({ window }: Props): JSX.Element => {
   const handleDrawerToggle = () => setMobileOpen(prevState => !prevState);
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center", color: "white", paddingX: "15px" }}>
-      <Box paddingY={1} display="flex" justifyContent="space-between" alignItems="center">
-        <Typography fontWeight={700}>BLOG</Typography>
+    <Mui.Box onClick={handleDrawerToggle} sx={{ textAlign: "center", color: "white", paddingX: "15px" }}>
+      <Mui.Box paddingY={1} display="flex" justifyContent="space-between" alignItems="center">
+        <Mui.Typography fontWeight={700}>BLOG</Mui.Typography>
         <Close />
-      </Box>
-      <Divider />
-      <List>
+      </Mui.Box>
+      <Mui.Divider />
+      <Mui.List>
         {navLinks.map(item => (
           <Link key={item.route} href={item.route}>
-            <ListItem disablePadding>
-              <ListItemButton sx={{ textAlign: "center" }}>
-                <ListItemText primary={item.text} />
-              </ListItemButton>
-            </ListItem>
+            <Mui.ListItem disablePadding>
+              <Mui.ListItemButton sx={{ textAlign: "center" }}>
+                <Mui.ListItemText primary={item.text} />
+              </Mui.ListItemButton>
+            </Mui.ListItem>
           </Link>
         ))}
-      </List>
-    </Box>
+      </Mui.List>
+    </Mui.Box>
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box height="10vh" display="flex">
-      <AppBar sx={{ bgcolor: "#141414", height: "10vh", justifyContent: "center" }} component="nav">
-        <Toolbar>
-          <IconButton
+    <Mui.Box height="10vh" display="flex">
+      <Mui.AppBar sx={{ bgcolor: "#141414", height: "10vh", justifyContent: "center" }} component="nav">
+        <Mui.Toolbar>
+          <Mui.IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
@@ -60,38 +48,38 @@ const Navbar: FC = ({ window }: Props): JSX.Element => {
             sx={{ mr: 2, display: { sm: "none" } }}
           >
             <Menu sx={{ color: "white" }} />
-          </IconButton>
-          <Box sx={{ flexGrow: 1 }}>
-            <Typography
+          </Mui.IconButton>
+          <Mui.Box sx={{ flexGrow: 1 }}>
+            <Mui.Typography
               variant="h6"
               component="div"
               fontWeight={700}
               sx={{ cursor: "pointer", color: "white", userSelect: "none", display: { xs: "none", sm: "block" } }}
             >
               <Link href="/">BLOG</Link>
-            </Typography>
-          </Box>
-          <Box>
-            <Typography
+            </Mui.Typography>
+          </Mui.Box>
+          <Mui.Box>
+            <Mui.Typography
               variant="h6"
               component="div"
               fontWeight={700}
               sx={{ cursor: "pointer", color: "white", userSelect: "none", display: { xs: "block", sm: "none" } }}
             >
               <Link href="/">BLOG</Link>
-            </Typography>
-          </Box>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+            </Mui.Typography>
+          </Mui.Box>
+          <Mui.Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navLinks.map(item => (
               <Link key={item.route} href={item.route}>
-                <Button sx={{ color: "#fff " }}>{item.text}</Button>
+                <Mui.Button sx={{ color: "#fff " }}>{item.text}</Mui.Button>
               </Link>
             ))}
-          </Box>
-        </Toolbar>
-      </AppBar>
+          </Mui.Box>
+        </Mui.Toolbar>
+      </Mui.AppBar>
       <nav>
-        <Drawer
+        <Mui.Drawer
           container={container}
           variant="temporary"
           open={mobileOpen}
@@ -105,10 +93,10 @@ const Navbar: FC = ({ window }: Props): JSX.Element => {
           }}
         >
           {drawer}
-        </Drawer>
+        </Mui.Drawer>
       </nav>
-      <Toolbar />
-    </Box>
+      <Mui.Toolbar />
+    </Mui.Box>
   );
 };
 

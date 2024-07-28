@@ -1,10 +1,12 @@
-import { Content, Hero, Sidebar } from "@/components";
-import { IBlog, IBlogCategory } from "@/interfaces/blogs.interface";
-import { MainLayout, SeoLayout } from "@/layouts";
-import { BlogsService } from "@/service/blog.service";
+import { FC } from "react";
 import { Grid } from "@mui/material";
 import { GetServerSideProps } from "next";
-import { FC } from "react";
+
+import { BlogsService } from "@/service/blog.service";
+import { IBlog, IBlogCategory } from "@/interfaces/blogs.interface";
+
+import { MainLayout, SeoLayout } from "@/layouts";
+import { Content, Hero, Sidebar } from "@/components";
 
 const Home: FC<HomePageProps> = ({ blogs, latestBlogs, categories }): JSX.Element => {
   return (
@@ -27,16 +29,14 @@ const Home: FC<HomePageProps> = ({ blogs, latestBlogs, categories }): JSX.Elemen
 export default Home;
 
 export const getServerSideProps: GetServerSideProps<HomePageProps> = async () => {
-  const blogs = await BlogsService.getAllBlogs();
-  const latestBlogs = await BlogsService.getLatestBlogs();
-  const categories = await BlogsService.getBlogCategories();
+  const [blogs, latestBlogs, categories] = await Promise.all([
+    BlogsService.getAllBlogs(),
+    BlogsService.getLatestBlogs(),
+    BlogsService.getBlogCategories(),
+  ]);
 
   return {
-    props: {
-      blogs,
-      latestBlogs,
-      categories,
-    },
+    props: { blogs, latestBlogs, categories },
   };
 };
 

@@ -1,10 +1,12 @@
-import { Content, Sidebar } from "@/components";
-import { IBlog, IBlogCategory } from "@/interfaces/blogs.interface";
-import { MainLayout, SeoLayout } from "@/layouts";
-import { BlogsService } from "@/service/blog.service";
+import { FC } from "react";
 import { Grid } from "@mui/material";
 import { GetServerSideProps } from "next";
-import { FC } from "react";
+
+import { BlogsService } from "@/service/blog.service";
+import { IBlog, IBlogCategory } from "@/interfaces/blogs.interface";
+
+import { MainLayout, SeoLayout } from "@/layouts";
+import { Content, Sidebar } from "@/components";
 
 const CategoryBlogs: FC<CategoryPageProps> = ({ category, blogs, latestBlogs, categories }): JSX.Element => {
   return (
@@ -27,17 +29,15 @@ export default CategoryBlogs;
 
 export const getServerSideProps: GetServerSideProps<CategoryPageProps> = async ({ query }) => {
   const category = query.slug as string;
-  const blogs = await BlogsService.getCategoryBlogs(category);
-  const latestBlogs = await BlogsService.getLatestBlogs();
-  const categories = await BlogsService.getBlogCategories();
+
+  const [blogs, latestBlogs, categories] = await Promise.all([
+    BlogsService.getCategoryBlogs(category),
+    BlogsService.getLatestBlogs(),
+    BlogsService.getBlogCategories(),
+  ]);
 
   return {
-    props: {
-      latestBlogs,
-      blogs,
-      categories,
-      category,
-    },
+    props: { latestBlogs, blogs, categories, category },
   };
 };
 
